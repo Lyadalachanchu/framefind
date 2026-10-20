@@ -22,7 +22,7 @@ Uploads are copied into the data directory. Direct public video URLs use HTTP do
 
 FFprobe reads video metadata. If the original is unsuitable for browser playback, FFmpeg creates a separate H264/AAC MP4 copy. Sampling always uses the original video, selecting decoded frame numbers **0, 10, 20, …** and retaining their presentation times relative to the first sample. This preserves timing for variable-frame-rate sources.
 
-Sampled JPEGs fit within 640 × 640 pixels, with padding where needed to reach a minimum side of 280 pixels. A frame manifest supports reuse after a restart. Existing complete frames keep their IDs and cached matches; regenerated sequences invalidate affected match caches. Preparation does not call Jev.
+Sampled JPEGs fit within 640 × 640 pixels, with padding where needed to reach a minimum side of 280 pixels. A frame manifest supports reuse after a restart. Existing complete frames keep their IDs and cached matches; regenerated sequences invalidate affected match caches. Jev evaluates the prepared frames when a search runs.
 
 ## Search and scoring
 
@@ -32,7 +32,7 @@ Jev answers one four-level `score` question about visual relevance. The client d
 
 Nearby matching frames from the same video become snippets, normally with 1.5 seconds of lead-in and 2 seconds of lead-out. Snippets are at least 3 seconds long where possible and bounded by the source duration. Groups stop when their matching-frame span reaches 20 seconds. The response returns up to 60 snippets ranked by peak relevance. Export transcodes a chosen range into an H264/AAC MP4; the temporary export is removed after serving it.
 
-There is no current label-generation stage or vector index. Older taxonomy helpers and database fields remain for compatibility with existing libraries.
+Older taxonomy helpers and database fields remain for compatibility with existing libraries.
 
 ## Persistence and jobs
 
@@ -44,7 +44,7 @@ The default `data/` directory contains:
 | `videos/<id>/` | Source video, optional playback copy, and sampled frames |
 | `clips/` | Temporary MP4 exports |
 
-The database filename is historical; it does not imply a separate AI indexing operation. Match caches include the normalized query, configured model, target frame ID, and neighboring frame IDs. Case and whitespace differences can reuse results. A model change uses separate cache entries.
+Match caches include the normalized query, configured model, target frame ID, and neighboring frame IDs. Case and whitespace differences can reuse results. A model change uses separate cache entries.
 
 Search jobs and progress live in process memory. Saved frame scores survive a restart, so rerunning a query can reuse completed work, while the previous job itself is not resumable. Interrupted local preparation becomes paused; interrupted downloads require importing the URL again. Deleting a video cascades its frame/cache records and removes media while retaining historical usage accounting.
 

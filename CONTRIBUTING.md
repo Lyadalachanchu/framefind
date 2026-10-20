@@ -50,7 +50,7 @@ For UI changes, also check upload/import, search progress, results, and snippet 
 | `app/static/` | HTML, CSS, and browser JavaScript |
 | `tests/` | API, media, importer, and provider-contract checks |
 
-FrameFind prepares every tenth decoded frame locally. Each new query scans those frames with Jev, and results use a fixed 95% relevance cutoff. Query matches are cached; there is no upfront AI indexing stage. Changes should preserve existing libraries and budget records unless an explicit migration is included.
+FrameFind prepares every tenth decoded frame locally. Each new query scans those frames with Jev, and results use a fixed 95% relevance cutoff. Query matches are cached for reuse. Changes should preserve existing libraries and budget records unless an explicit migration is included.
 
 ## Send a pull request
 

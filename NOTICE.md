@@ -2,13 +2,13 @@
 
 FrameFind source code and original documentation are licensed under the [MIT License](LICENSE). Third-party footage shown in screenshots and demo recordings keeps its original license.
 
-## Sintel footage
+## Demo footage
 
-The demo uses visual excerpts from the **Sintel trailer**, © copyright Blender Foundation | [www.sintel.org](https://www.sintel.org/), licensed under [Creative Commons Attribution 3.0 Unported](https://creativecommons.org/licenses/by/3.0/).
+The demo shows brief visual excerpts from **The Most Overlooked Taste in the World** by **Rabbit Hole**, using the search query **tap**.
 
-Source: [W3C-hosted Sintel trailer](https://media.w3.org/2010/05/sintel/trailer.mp4). See the [license record](https://commons.wikimedia.org/wiki/File:Sintel_trailer-1080p.ogv).
+Source: [Rabbit Hole's original YouTube video](https://www.youtube.com/watch?v=zC1v19wfoTA&t=6s).
 
-The footage appears within FrameFind's interface as sampled thumbnails and short playback excerpts. The demo recording is silent, edited for length, and includes instructional captions. These changes do not imply endorsement by the Blender Foundation. Preserve this attribution when redistributing the demo, GIF, or screenshot.
+The footage appears within FrameFind's interface as sampled thumbnails and a short playback excerpt to demonstrate search and clip export. The recording is silent, edited for length, and captioned. It uses real cached Jev results. Rabbit Hole and the original rights holders retain their rights to the footage; it is not licensed under this repository's MIT license. No affiliation or endorsement is implied. Keep the source credit with the demo, GIF, and screenshot.
 
 ## Dependencies and services
 

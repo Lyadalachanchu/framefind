@@ -8,7 +8,7 @@ Upload a clip or paste a public video URL, describe what you want to see, and ju
 
 [Watch the MP4 demo](docs/media/framefind-demo.mp4) · [Contribute](CONTRIBUTING.md) · [Architecture](docs/architecture.md) · [CI](https://github.com/Lyadalachanchu/framefind/actions/workflows/ci.yml)
 
-The demo imports a public clip, searches for “a person,” plays a matching snippet, and exports it. Waiting time is shortened. Footage: *Sintel*, © Blender Foundation, [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/), from the [W3C sample](https://media.w3.org/2010/05/sintel/trailer.mp4); shown without audio. See [NOTICE](NOTICE.md).
+The demo searches [The Most Overlooked Taste in the World](https://www.youtube.com/watch?v=zC1v19wfoTA&t=6s) by **Rabbit Hole** for **“tap”**, plays a matching snippet, and exports it. It starts with the video ready to search and uses saved Jev matches; pauses are shortened. See [NOTICE](NOTICE.md) for footage credits.
 
 ## Try it
 
@@ -37,13 +37,13 @@ Enter your key at the hidden prompt and open **http://127.0.0.1:8765**. Keep the
 2. **Describe a moment:** try “a person,” “a red car,” or “a slide with a chart.”
 3. **Play or export:** open a matching snippet, loop it, or download an MP4 clip.
 
-To try the same footage as the demo, import this [Sintel trailer](https://media.w3.org/2010/05/sintel/trailer.mp4). Imports support files up to 2 GB and 60 minutes; short clips are the best starting point. YouTube videos that require sign-in are unsupported, and availability depends on YouTube and yt-dlp.
+To try the same footage as the demo, import [this YouTube video](https://www.youtube.com/watch?v=zC1v19wfoTA&t=6s) and search for **“tap”**. Imports support files up to 2 GB and 60 minutes; short clips are the best starting point. YouTube videos that require sign-in are unsupported, and availability depends on YouTube and yt-dlp.
 
 ## What happens when you search?
 
-FFmpeg prepares **every tenth decoded frame** locally, retaining video timestamps. Preparation makes no AI requests. Each new query checks all sampled frames with Jev, including nearby frames for short motion context, with **8 concurrent requests by default**. Matching frames become playable snippets.
+FFmpeg prepares **every tenth decoded frame** locally, retaining video timestamps. Each new query checks all sampled frames with Jev, including nearby frames for short motion context, with **8 concurrent requests by default**. Matching frames become playable snippets.
 
-The cutoff is fixed at **95% relevance**. This is a normalized model score, not a probability that a result is correct. Repeating the same query reuses saved scores for the same frames and model. There is no upfront AI indexing stage, so a new query still takes time and incurs API cost.
+The cutoff is fixed at **95% relevance**. This is a normalized model score, not a probability that a result is correct. Repeating the same query reuses saved scores for the same frames and model. A new query takes time and incurs API cost as Jev checks the sampled frames.
 
 Search covers visible scenes, objects, text, and actions, not speech or audio. Sampling can miss brief events, and image analysis can make mistakes. TypeSafe currently describes [image support as a preview feature](https://docs.typesafe.ai/images).
 

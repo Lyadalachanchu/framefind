@@ -1,25 +1,21 @@
 # Demo assets
 
-- [29-second MP4](media/framefind-demo.mp4): 1280 × 800, silent, suitable for a post or a README link.
+- [Short MP4 demo](media/framefind-demo.mp4): silent, suitable for a post or a README link.
 - [Animated preview](media/framefind-demo.gif): smaller preview that GitHub renders directly in a README.
 - [Screenshot](media/screenshot.png): the actual results screen.
 
-The recording shows the running application with real Jev responses. It imports the [52-second Sintel trailer](https://media.w3.org/2010/05/sintel/trailer.mp4), searches for **a person**, opens a matching snippet, enables looping, and downloads an MP4. No responses or scores were mocked. The demo uses a separate sample library, not personal videos.
-
-Download/preparation and the search are sped up, as labeled in the video; pauses between actions are removed. Playback excerpts run at normal speed. This is a workflow demonstration, not a latency or accuracy benchmark. Model responses and performance can vary.
+The recording shows FrameFind searching [The Most Overlooked Taste in the World](https://www.youtube.com/watch?v=zC1v19wfoTA&t=6s) by **Rabbit Hole** for **tap**, opening a matching snippet, and downloading an MP4 clip. It starts with the video already prepared and uses saved results from real Jev responses. Pauses between actions are shortened; playback excerpts run at normal speed.
 
 ## Reproduce the walkthrough
 
 1. Start FrameFind with your own TypeSafe API key.
-2. Choose **Import URL** and paste the trailer URL above.
-3. Wait for **Ready to search**. Preparation runs locally without API calls.
-4. Search for **a person**. This makes paid requests for the sampled frames unless that query is already cached.
+2. Choose **Import URL** and paste the YouTube URL above.
+3. Wait for **Ready to search** while FrameFind prepares the sampled frames locally.
+4. Search for **tap**. Jev checks the sampled frames, with paid requests for any matches that are not already cached.
 5. Open a result, try **Loop snippet**, and choose **Download clip**.
 
-The source contains 126 sampled frames with the current every-tenth-frame sampler. The recorded run found two snippets above the fixed 95% cutoff. Repeating a compatible query uses cached scores.
+The video contains 5,739 sampled frames. The recorded query returns seven matching moments above the fixed 95% relevance cutoff. Repeating a compatible query uses cached scores, as shown in the recording. Search time and results depend on the source video, cache coverage, and provider responses.
 
-## Attribution when sharing
+## Footage credit
 
-Keep the on-screen credit and include: **Sintel trailer, © Blender Foundation | [sintel.org](https://www.sintel.org/), [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Visual excerpts shown inside FrameFind; recording edited and captioned.** See [NOTICE.md](../NOTICE.md).
-
-The repository's MIT license does not replace the footage's Creative Commons license.
+The source footage is [The Most Overlooked Taste in the World](https://www.youtube.com/watch?v=zC1v19wfoTA&t=6s) by **Rabbit Hole**. See [NOTICE.md](../NOTICE.md) for the credit and source-footage terms. Preserve the credit when sharing the demo.
