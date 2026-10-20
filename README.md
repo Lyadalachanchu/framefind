@@ -8,7 +8,7 @@ Upload a clip or paste a public video URL, describe what you want to see, and ju
 
 [Watch the MP4 demo](docs/media/framefind-demo.mp4) · [Contribute](CONTRIBUTING.md) · [Architecture](docs/architecture.md) · [CI](https://github.com/Lyadalachanchu/framefind/actions/workflows/ci.yml)
 
-The demo searches [The Most Overlooked Taste in the World](https://www.youtube.com/watch?v=zC1v19wfoTA&t=6s) by **Rabbit Hole** for **“tap”**, plays a matching snippet, and exports it. It starts with the video ready to search and uses saved Jev matches; pauses are shortened. See [NOTICE](NOTICE.md) for footage credits.
+The demo imports [The Most Overlooked Taste in the World](https://www.youtube.com/watch?v=zC1v19wfoTA&t=6s) by **Rabbit Hole** from its YouTube URL, searches for **“tap”**, plays a matching snippet, and exports it. Import, preparation, and pauses are shortened; search reuses saved results from real Jev responses. See [NOTICE](NOTICE.md) for footage credits.
 
 ## Try it
 

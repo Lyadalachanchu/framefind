@@ -7,7 +7,7 @@
 - [Animated preview](media/framefind-demo.gif)
 - [Architecture](architecture.md)
 
-The recording shows the actual app searching [The Most Overlooked Taste in the World](https://www.youtube.com/watch?v=zC1v19wfoTA&t=6s) by **Rabbit Hole** for **“tap”**, playing a result, and exporting a snippet. It starts with the video ready to search and uses saved Jev matches. Pauses are shortened, and the recording is silent. Preserve the footage credit in [NOTICE](../NOTICE.md) alongside any reposted demo.
+The recording shows the actual app importing [The Most Overlooked Taste in the World](https://www.youtube.com/watch?v=zC1v19wfoTA&t=6s) by **Rabbit Hole** from its YouTube URL, searching for **“tap”**, playing a result, and exporting a snippet. The import and preparation wait is shortened, and the search uses saved results from real Jev responses. Pauses are shortened, and the recording is silent. Preserve the footage credit in [NOTICE](../NOTICE.md) alongside any reposted demo.
 
 ## Show HN draft
 

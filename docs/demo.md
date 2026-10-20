@@ -4,7 +4,7 @@
 - [Animated preview](media/framefind-demo.gif): smaller preview that GitHub renders directly in a README.
 - [Screenshot](media/screenshot.png): the actual results screen.
 
-The recording shows FrameFind searching [The Most Overlooked Taste in the World](https://www.youtube.com/watch?v=zC1v19wfoTA&t=6s) by **Rabbit Hole** for **tap**, opening a matching snippet, and downloading an MP4 clip. It starts with the video already prepared and uses saved results from real Jev responses. Pauses between actions are shortened; playback excerpts run at normal speed.
+The recording shows FrameFind importing [The Most Overlooked Taste in the World](https://www.youtube.com/watch?v=zC1v19wfoTA&t=6s) by **Rabbit Hole** from its YouTube URL, searching for **tap**, opening a matching snippet, and downloading an MP4 clip. The import and preparation wait is shortened, and the search uses saved results from real Jev responses. Pauses between actions are shortened; playback excerpts run at normal speed.
 
 ## Reproduce the walkthrough
 
