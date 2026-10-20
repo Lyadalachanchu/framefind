@@ -18,7 +18,6 @@
   const defaultEmptyVisual = $("empty-state").innerHTML;
   const escape = (value) => String(value ?? "").replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
   const number = (value) => new Intl.NumberFormat().format(Number(value) || 0);
-  const money = (value) => { const cost = Number(value) || 0; return "$" + cost.toFixed(cost > 0 && cost < 0.01 ? 4 : 2); };
   const percent = (value) => Math.round(Math.max(0, Math.min(1, Number(value) || 0)) * 100);
   const time = (seconds) => { const value = Math.max(0, Math.floor(Number(seconds) || 0)); const hours = Math.floor(value / 3600); const minutes = Math.floor((value % 3600) / 60); return `${hours ? hours + ":" : ""}${String(minutes).padStart(2, "0")}:${String(value % 60).padStart(2, "0")}`; };
   const videoUrl = (video, suffix = "") => `/api/videos/${encodeURIComponent(video.id || video.video_id)}${suffix}`;
@@ -95,8 +94,6 @@
   function renderStatus() {
     const status = state.status;
     if (!status) return;
-    $("stat-cost").textContent = money(status.stats?.cost_usd);
-    $("stat-cost").title = `${number(status.stats?.input_tokens)} input tokens · estimated total API usage`;
     const configured = status.configured !== false;
     const ffmpeg = status.ffmpeg_available !== false;
     $("configuration-alert").hidden = configured && ffmpeg;
@@ -277,7 +274,7 @@
     $("results-summary").hidden = running && !state.results.length;
     const coverage = typeof search.coverage === "number" ? ` · ${percent(search.coverage)}% frame coverage` : "";
     const count = state.results.length;
-    $("results-summary").innerHTML = `<span>${count} moment${count === 1 ? "" : "s"}${search.status === "cancelled" ? " · search stopped" : running ? " found so far" : " found"}${search.cached ? ` · ${number(search.cached)} cached checks` : ""}</span><small>${checked || totalFrames ? `${number(checked)} / ${number(totalFrames)} frames checked${coverage}` : ""}${search.cost_usd ? `<br>Search cost ${money(search.cost_usd)}` : ""}</small>`;
+    $("results-summary").innerHTML = `<span>${count} moment${count === 1 ? "" : "s"}${search.status === "cancelled" ? " · search stopped" : running ? " found so far" : " found"}${search.cached ? ` · ${number(search.cached)} cached checks` : ""}</span><small>${checked || totalFrames ? `${number(checked)} / ${number(totalFrames)} frames checked${coverage}` : ""}</small>`;
     const resultSignature = JSON.stringify(state.results);
     if (resultSignature !== state.resultsSignature) {
       state.resultsSignature = resultSignature;
