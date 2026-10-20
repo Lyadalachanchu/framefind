@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111310">
+  <meta name="description" content="Find matching moments in your videos with Jev.">
+  <title>FrameFind · Search your videos</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23d8f36a'/%3E%3Cpath d='M10 10h20v6H16v4h11v6H16v5h-6z' fill='%23111310'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#search-query">Skip to search</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Video library">
+      <div class="sidebar-brand"><a class="brand" href="/" aria-label="FrameFind home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>FrameFind<span class="brand-dot">.</span></a><button id="help-toggle" class="icon-button small" aria-label="How it works" title="How it works"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 .5c0 1.5-2.5 1.5-2.5 3M12 16h.01"/></svg></button></div>
+      <div class="sidebar-heading"><h2>Your library <span id="library-count">0</span></h2><button class="icon-button small upload-trigger" aria-label="Add videos" title="Add videos"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      <div class="library-scope"><button id="all-videos" class="scope-button active" type="button"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>All videos<span id="all-count">0</span></button></div>
+      <div id="video-list" class="video-list"></div>
+      <button class="sidebar-upload upload-trigger"><svg viewBox="0 0 24 24"><path d="M12 16V4m-4 4 4-4 4 4M4 15v5h16v-5"/></svg>Add a video<span>+</span></button>
+      <div class="sidebar-bottom">
+        <div class="usage-grid"><div><strong id="stat-cost">$0.00</strong><span>est. API cost</span></div></div>
+        <div class="connection"><span id="connection-dot" class="connection-dot"></span><span id="connection-label">Connecting to your workspace</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div id="configuration-alert" class="notice warning" hidden><svg viewBox="0 0 24 24"><path d="m12 3 10 18H2L12 3Z M12 9v5m0 3h.01"/></svg><div><strong id="configuration-title">Connect Jev to search</strong><p id="configuration-message">Run start.command and enter your TypeSafe API key when prompted. Your key stays on the server.</p></div></div>
+      <section id="help-panel" class="help-panel" hidden><div><strong>Add videos</strong><p>Upload files or import a public video URL.</p></div><div><strong>Prepare videos</strong><p>Every tenth frame is saved locally. No AI analysis is needed at import.</p></div><div><strong>Search</strong><p>Jev checks every sampled frame when you search. Matching clips can be played or downloaded.</p></div></section>
+      <section class="search-section" aria-labelledby="main-title">
+        <h1 id="main-title" class="sr-only">Search videos</h1>
+        <div id="example-queries" class="example-queries" aria-label="Example searches"><button type="button" data-query="FBI">FBI <span aria-hidden="true">↗</span></button><button type="button" data-query="A person speaking">A person speaking <span aria-hidden="true">↗</span></button><button type="button" data-query="A chart">A chart <span aria-hidden="true">↗</span></button><button type="button" data-query="Computer screen">Computer screen <span aria-hidden="true">↗</span></button></div>
+        <form id="search-form" class="search-form">
+          <div class="search-input-row"><svg class="search-icon" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><label class="sr-only" for="search-query">Describe the moment to find</label><input id="search-query" name="query" type="text" placeholder="Search your videos…" autocomplete="off" maxlength="500" required><button id="search-button" class="search-submit" type="submit" aria-label="Search videos"><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button></div>
+        </form>
+        <div class="search-footnote"><span id="search-scope" class="search-scope">Searching all videos</span></div>
+      </section>
+
+      <section id="upload-zone" class="upload-zone" aria-label="Upload videos">
+        <div class="upload-symbol"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m10 8 6 4-6 4V8Z"/></svg><span>+</span></div>
+        <div class="upload-copy"><h2 id="upload-title">Add videos</h2><p id="upload-description">Drop files or paste a link.</p></div><div class="upload-buttons"><button class="primary-button upload-trigger" type="button"><svg viewBox="0 0 24 24"><path d="M12 16V4m-4 4 4-4 4 4M4 15v5h16v-5"/></svg>Upload video</button><button id="import-toggle" class="secondary-button" type="button" aria-expanded="false" aria-controls="import-form"><svg viewBox="0 0 24 24"><path d="m10 13 4-4M8 16l-2 2a4 4 0 0 1-6-6l5-5a4 4 0 0 1 6 0m2 1 2-2a4 4 0 0 1 6 6l-5 5a4 4 0 0 1-6 0" transform="translate(1 0) scale(.9)"/></svg>Import URL</button></div>
+      </section>
+      <input id="file-input" type="file" accept="video/*,.mkv,.avi,.m4v,.mts,.m2ts" multiple hidden>
+      <form id="import-form" class="import-form" hidden><label for="import-url">Public video URL</label><div class="import-row"><input id="import-url" type="url" placeholder="https://…" autocomplete="off" required><button id="import-submit" type="submit" class="primary-button">Import video <span aria-hidden="true">↗</span></button></div><p>Public YouTube or direct video links.</p></form>
+      <div id="upload-progress" class="upload-progress" role="status" hidden></div>
+
+      <section class="results-section" aria-labelledby="results-heading">
+        <div class="section-heading"><div><h2 id="results-heading">Results</h2><span id="results-subtitle" hidden></span></div></div>
+        <div id="search-progress" class="search-progress" role="status" hidden></div>
+        <div id="results-summary" class="results-summary" hidden></div>
+        <div id="results-grid" class="results-grid"></div>
+        <div id="empty-state" class="empty-state"><h3 id="empty-title">Add a video to search</h3><p id="empty-description"></p></div>
+      </section>
+    </main>
+  </div>
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="false"></div>
+  <dialog id="player-dialog" class="player-dialog" aria-labelledby="player-title"><div class="player-header"><div><span id="player-kicker" class="eyebrow">MATCHED MOMENT</span><h2 id="player-title">Video snippet</h2></div><button id="close-player" class="icon-button" aria-label="Close player"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div><video id="video-player" controls playsinline preload="metadata"></video><div class="player-details"><div><strong id="player-time"></strong><p id="player-evidence"></p></div><div class="player-actions"><label class="loop-toggle"><input id="loop-snippet" type="checkbox"> Loop snippet</label><a id="download-snippet" class="primary-button" download><svg viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 17v4h16v-4"/></svg>Download clip</a></div></div><div id="player-labels" class="player-labels"></div></dialog>
+</body>
+</html>

@@ -1,0 +1,23 @@
+name: Feature idea
+description: Suggest an improvement or discuss a larger contribution.
+title: "[Idea] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What would this help you do?
+      description: Describe a concrete use case or current limitation.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Explain the experience you would like and any alternatives you considered.
+    validations:
+      required: true
+  - type: textarea
+    id: contribution
+    attributes:
+      label: Would you like to work on this?
+      description: Optional. It is fine to suggest an idea without implementing it.

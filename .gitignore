@@ -1,0 +1,46 @@
+# Local videos, extracted frames, search caches, and usage records.
+/data/
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+
+# Credentials and machine-specific configuration.
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Python environments and generated files.
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.egg-info/
+
+# Local tools, temporary work, and build artifacts.
+/bin/
+/work/
+/build/
+/dist/
+node_modules/
+*.log
+*.zip
+*.tar.gz
+
+# Editor and operating system files.
+.DS_Store
+._*
+Thumbs.db
+.idea/
+.vscode/
+*~
+*.swp
