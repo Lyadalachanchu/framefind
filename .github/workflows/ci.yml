@@ -31,7 +31,6 @@ jobs:
     env:
       # No provider credentials are needed or exposed to pull-request code.
       TYPESAFE_API_KEY: ''
-      JEV_DATA_DIR: ${{ runner.temp }}/framefind-test-data
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -62,6 +61,8 @@ jobs:
           ffmpeg -version
           ffprobe -version
       - name: Test without live API calls
+        env:
+          JEV_DATA_DIR: ${{ runner.temp }}/framefind-test-data
         run: python -m pytest -q
       - name: Check browser JavaScript
         run: node --check app/static/app.js
